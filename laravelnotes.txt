@@ -1,0 +1,56 @@
+1. Rotes you can use routes to changes url or set url ( Rotes::get('home',function(){ return view('home) }) )
+
+2. Rotes for / pass id or name  ( Routes::get('/home/{id}') function($id){
+    return $id;
+})
+
+3. Routes for prefix ( Routes::prefix('home')group->function(){
+    Routes ...
+} )
+
+4. blade Routes Route::get('/blade/{value?}', function($value = null){
+    return view('balde')->with(['value' => $value]);
+});
+
+5. To use controller we need to declare them in routes to use through them ( Route::get('/',[DemoController ::class, 'index']); ).
+
+6. invoke controller is use to automaticly run (php artisan make:controller namecontroller --invokable).
+
+7. resourse controller it is use for resourse like update delete .
+
+8. Laravel have inbuild database for users migration ( php artisan migrate )  if the database is not created in php mysql database it will automaticly create them.
+
+9. php artisan rollback its use to rollback the migration.
+
+10. If we want to give url to the form or redirect to other page use {{url(/pagename )}}
+
+11.  @csrf its is used becuse of Laravel automatcaly genrate a hidden token with help of this.
+
+12. For errer message in form we use this  
+                @error('name')
+                  {{ $message }}
+                @enderror
+
+13. If wanteed to update or edit or submit you need to use post not get with @crsf token and for delete or view we use get method.
+
+14. TESTING  Laravel have two type of testing Unit and feature testing (" Unit testing is use to test your some part of your code while feature testing is use to go throug out the project  eg: unit testing 2+2  eg: feature Testing Regitration user give the detail and go throug dashboard page  ")
+
+15. Helper in Laravel we need to create them in app folder and autolad in composer.json and then we can use the helper (then in the terminal we need to run composer dump-autoload).
+
+16. COMPONENT   In Laravel component is used for if we don't want write code every time then we use component for (eg: input feild )
+                (method to create : php artisan make:component name of the component)
+
+17. MUTATOR ACCESSOR In larevel we use MUTATOR for like if adding data from the user that i want to modify in database here we use mutatot and accessor.(eg : for mutator if the user submit any detial on our page that we want in upper case we use mutatar in model file)
+['   public function setNameattribute($value){
+    $this->attributes['name'] = ucwords($value);
+   }   ']
+
+18. SESSION Session is use to some data on your browser for eg: like you logged in for the page if you go to other page then also it will logged in , for example add to cart.
+
+19. SEEDER Seeder add instant data into your database ['php artisan make:seeder UserSeeder']
+
+20. FAKERS Faker is a PHP library used by Laravel to generate fake names, emails, addresses, etc ['php artisan make:factory UserFactory'] for faker you need to ad use Faker\Factory as Faker;   and  $faker = Faker::create();
+
+21. Pagination in Laravel its very easy to use we want only to run file name and pagination ['Employe::pagination(5)']
+
+22. how to search data in laravel $employe = Employe::where('name','LIKE',"%$search%")->orwhere('email','LIKE',"%$search%")->paginate(5)->withQueryString();
