@@ -9,7 +9,7 @@
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
   <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Register</h2>
-    <form action="{{url(!empty($employe->Id) && $employe->Id ? '/update/'.$employe->Id : '/register')}}" method="POST" class="space-y-5">
+    <form action="{{url(!empty($employe->Id) && $employe->Id ? '/update/'.$employe->Id : '/register')}}" method="POST" class="space-y-5" encrypt="multipart/form-data">
 
    
       @csrf
@@ -53,6 +53,19 @@
                   {{ $message }}
                 @enderror
                </span>
+               
+               <div>
+                <label for="file" class="block text-sm font-medium text-gray-700">file</label>
+        <input type="file" id="email" name="file"  value="{{ old('file',$employe -> file ?? '' ) }}"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+      </div>
+      <span class="text-red-500 text-sm">
+                @error('file')
+            
+                  {{ $message }}
+                @enderror
+               </span>
+                
 
 
       <!-- Submit Button -->

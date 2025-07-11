@@ -20,14 +20,21 @@ class RegisterController extends Controller
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
         'address' => 'required',
+
     ]);
+
+    // $filename = $request->file('file')->getClientOriginalName();
+
+    // $request->file('file')->storeAs('public/uploads', $filename);
 
     $employe = new Employe();
     $employe->emp_id = mt_rand(1000, 9999); // Generate a random employee ID
     $employe->name = $request->name;
     $employe->email = $request->email;
     $employe->address = $request->address;
+    $employe->file = $request->file;
     $employe->status = 1;
+
     $employe->save();
 
     return redirect('view');

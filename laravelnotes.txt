@@ -54,3 +54,6 @@
 21. Pagination in Laravel its very easy to use we want only to run file name and pagination ['Employe::pagination(5)']
 
 22. how to search data in laravel $employe = Employe::where('name','LIKE',"%$search%")->orwhere('email','LIKE',"%$search%")->paginate(5)->withQueryString();
+
+23. How to upload file in laravel first in the form we need to add encrypt="multipart/form-data" and then in the controller we use 
+$request->file('file')->store();
