@@ -62,6 +62,31 @@ $request->file('file')->store();
 ( To create Middleware we need to write : php artisan make:middleware (name));
 Then you need to add path of that middleware that you created in kernal in global or group or individual(routes).
 
-25.
+25. authentication in laravel we take chack the cerdintioanl from database.
+
+26. Query builder select first we need right the db name where we want like this 
+  (  DB::table('name of the table')->get();    )  now we have mulitple function to selecting data
+  1. Get [  DB::table('name of the table')->get();    ]
+
+  2. where [  DB::table('name of the table')->where('address','india')->get();    ]
+  2.1. where [  DB::table('name of the table')->where(['address'=>'india','name'=>'affan'])->get();  ]
+
+  3. first [  DB::table('name of the table')->where(['address'=>'india','name'=>'affan'])->first();  ] it use to get first data in the tabel with where feild you want.
+
+  4. latest [  DB::table('name of the table')->where(['address'=>'india','name'=>'affan'])->latest(); ]
+
+  5. value  [  DB::table('name of the table')->where(['address'=>'india','name'=>'affan'])->value('col name'); ]
+  the value use to render which column name you want. 
+
+  6. pluk is same as value. but craking the vlaue.
+
+  7.find [  DB::table('name of the table')->find(4) ] it hellping to find exact id number that you want from the database.
+
+  8. same like this we have ( min max avg count sum).
+
+  9. like this we have ( exist doesnotexist) (where <=where ).
+
+27. Joins its is use to get data from multiple table like for ex: if we have users_table and employe_table where both have emp_id than we can joins them to get the data of them. 
+[  DB::table('employe')->joins('users', 'employe_table.emp_id' ,"=","users_table.emp_id")->get()  ] 
 
 
