@@ -89,4 +89,3 @@ Then you need to add path of that middleware that you created in kernal in globa
 27. Joins its is use to get data from multiple table like for ex: if we have users_table and employe_table where both have emp_id than we can joins them to get the data of them. 
 [  DB::table('employe')->joins('users', 'employe_table.emp_id' ,"=","users_table.emp_id")->get()  ] 
 
-
