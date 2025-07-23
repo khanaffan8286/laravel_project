@@ -46,7 +46,7 @@ Route::post('update/{Id}',[RegisterController ::class, 'update_emp']);
 Route::get('delete/{Id}',[RegisterController ::class, 'delete_emp']);
 
 
-Route::get('/',[DemoController ::class, 'index']);
+// Route::get('/',[DemoController ::class, 'index']);
 
 Route::get('test',TestController::class);
 
@@ -75,3 +75,9 @@ Route::get('forgot-session',function(Request $request){
     $request->session()->flush();
 });
 
+Route::get('form', [RegisterController ::class, 'index']);
+
+Route::get('/',[App\Http\Controllers\AuthController :: class, 'index']);
+Route::get('login',[App\Http\Controllers\AuthController :: class, 'login'])->name('login');
+
+Route::post('login',[App\Http\Controllers\AuthController :: class, 'login']);

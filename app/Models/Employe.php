@@ -12,6 +12,9 @@ class Employe extends Model
     protected $table = 'employe';
     protected $primaryKey = 'Id';
     public $timestamps = false;
+     protected $hidden = [
+        'password',
+    ];
 
    public function setNameattribute($value){
     $this->attributes['name'] = ucwords($value);

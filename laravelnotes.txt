@@ -57,3 +57,11 @@
 
 23. How to upload file in laravel first in the form we need to add encrypt="multipart/form-data" and then in the controller we use 
 $request->file('file')->store();
+
+24. Middleware in laravel is use to check the user is authenticate or not means if you want that user is not filling the requirment that you want they will not allow to go to next page or website 
+( To create Middleware we need to write : php artisan make:middleware (name));
+Then you need to add path of that middleware that you created in kernal in global or group or individual(routes).
+
+25.
+
+

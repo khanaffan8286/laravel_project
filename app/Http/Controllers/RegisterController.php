@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employe;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -20,6 +21,7 @@ class RegisterController extends Controller
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
         'address' => 'required',
+        'password' => 'required|min:6',
 
     ]);
 
@@ -31,6 +33,7 @@ class RegisterController extends Controller
     $employe->emp_id = mt_rand(1000, 9999); // Generate a random employee ID
     $employe->name = $request->name;
     $employe->email = $request->email;
+     $employe->password = $request->password;
     $employe->address = $request->address;
     $employe->file = $request->file;
     $employe->status = 1;
