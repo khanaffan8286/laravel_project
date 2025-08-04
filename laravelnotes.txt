@@ -1,5 +1,8 @@
 1. Rotes you can use routes to changes url or set url ( Rotes::get('home',function(){ return view('home) }) )
 
+1.1  composer create-project laravel/laravel your-project-name  ( To create laravel project)
+
+
 2. Rotes for / pass id or name  ( Routes::get('/home/{id}') function($id){
     return $id;
 })

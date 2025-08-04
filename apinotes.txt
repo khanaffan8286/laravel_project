@@ -9,3 +9,10 @@ REST is arcitecture, it simply provide acces to resourse and client to access an
 Rest is part OF API .
 
 4. REST is used to create read update delete.
+
+5. Postman is use to test the api.
+
+6. Request method client => server   => http   (GET POST PUT UPDATE delete)
+
+7. Idempotent is a property of operations or API requests that ensures repeating the operation multiple times produces the same result as executing it once.
+(GET post is not idempotent)
