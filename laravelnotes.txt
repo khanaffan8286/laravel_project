@@ -11,7 +11,8 @@
     Routes ...
 } )
 
-4. blade Routes Route::get('/blade/{value?}', function($value = null){
+4. Blade uses a clean, easy-to-read syntax that simplifies the creation of dynamic HTML templates.
+ blade Routes Route::get('/blade/{value?}', function($value = null){
     return view('balde')->with(['value' => $value]);
 });
 
