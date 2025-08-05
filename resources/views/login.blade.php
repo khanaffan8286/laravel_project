@@ -13,26 +13,30 @@
             <p class="text-gray-700 mt-2 text-lg">Sign in to your account</p>
         </div>
         
-        <form class="space-y-8" action ="{{ url('/login') }}" method="POST">
+        <form class="space-y-8" action="{{ url('/login') }}" method="POST">
             @csrf
-            <div>
-                <label for="username" class="block text-sm font-semibold text-gray-700 mb-3">Username</label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    required
-                    class="w-full px-5 py-3 rounded-xl bg-white shadow-inner placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:ring-opacity-50 transition-shadow duration-300 border border-gray-300 hover:shadow-lg hover:scale-[1.02] transform"
-                    placeholder="Enter your username"
-                >
 
-            </div>
-            <span class="text-red-500 text-sm">
-                @error('username')
-            
-                  {{ $message }}
+            @if ($errors->has('login'))
+                <span class="text-red-500 text-sm block text-center mb-3">
+                    {{ $errors->first('login') }}
+                </span>
+            @endif
+
+            <div>
+                <label for="email" class="block text-sm font-semibold text-gray-700 mb-3">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value="{{ old('email') }}"
+                    class="w-full px-5 py-3 rounded-xl bg-white shadow-inner placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:ring-opacity-50 transition-shadow duration-300 border border-gray-300 hover:shadow-lg hover:scale-[1.02] transform"
+                    placeholder="Enter your email"
+                >
+                @error('email')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
-               </span>
+            </div>
             
             <div>
                 <label for="password" class="block text-sm font-semibold text-gray-700 mb-3">Password</label>
@@ -44,20 +48,17 @@
                     class="w-full px-5 py-3 rounded-xl bg-white shadow-inner placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:ring-opacity-50 transition-shadow duration-300 border border-gray-300 hover:shadow-lg hover:scale-[1.02] transform"
                     placeholder="Enter your password"
                 >
-            </div> 
-              <span class="text-red-500 text-sm">
                 @error('password')
-            
-                  {{ $message }}
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
-               </span>
-            
+            </div> 
+
             <div class="flex items-center justify-between">
                 <label class="flex items-center space-x-2 text-sm font-medium text-gray-800">
                     <input
                         type="checkbox"
                         id="remember-me"
-                        name="remember-me"
+                        name="remember"
                         class="w-5 h-5 rounded-md border border-gray-400 text-indigo-600 focus:ring-indigo-500 focus:ring-2"
                     >
                     <span>Remember me</span>

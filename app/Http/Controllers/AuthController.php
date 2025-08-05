@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Middleware\Check;
+use App\Models\Employe;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -12,25 +14,25 @@ class AuthController extends Controller
         return view('login');
     }
 
-      public function login(requsest $request)
+    public function login(Request $request)
     {
-        validate($request, [
+        // Validate the request
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
 
-        if($validate){
-            $user = Employe::where('email', $request->email)->first();
-            if ($user && Hash::Check($request->password, $user->password)) {
-                // Authentication passed
-                session(['user' => $user]);
-                return view('view-details');
-            }
+        $user = Employe::where('email', $request->email)->first();
 
-
-        }
-        else{
-            return view('login');
+       if ($user && $request->password === $user->password) {
+            // Authentication passed
+            Session::put('user', $user);
+            return view('view-detail');
+        } else {
+            // Authentication failed
+            return back()->withErrors([
+                'login' => 'Invalid email or password.',
+            ])->withInput();
         }
     }
 }

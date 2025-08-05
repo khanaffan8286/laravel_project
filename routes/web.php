@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\RegisterController;
+
 use Illuminate\Http\Request;
 
 
@@ -40,7 +41,7 @@ Route::get('component',function(){
 
 Route::get('form', [RegisterController ::class, 'index']);
 Route::post('register', [RegisterController ::class, 'register']);
-Route::get('view',[RegisterController ::class, 'view']);
+Route::get('',[RegisterController ::class, 'view']);
 Route::get('edit/{emp_id}',[RegisterController ::class, 'edit_employe']);
 Route::post('update/{Id}',[RegisterController ::class, 'update_emp']);
 Route::get('delete/{Id}',[RegisterController ::class, 'delete_emp']);
@@ -77,7 +78,7 @@ Route::get('forgot-session',function(Request $request){
 
 Route::get('form', [RegisterController ::class, 'index']);
 
-Route::get('/',[App\Http\Controllers\AuthController :: class, 'index']);
+Route::get('/login',[App\Http\Controllers\AuthController :: class, 'index']);
 Route::get('login',[App\Http\Controllers\AuthController :: class, 'login'])->name('login');
 
 Route::post('login',[App\Http\Controllers\AuthController :: class, 'login']);
