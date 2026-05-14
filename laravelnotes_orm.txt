@@ -1,1 +1,41 @@
+ORM -> ORM STANDS FOR OBJECT RELATIONAL MAPPING 
+
+IT AN TECHNIQE THAT HELPS YOU TO INTRACT YOU WITH DATABASE USING PHP OBJECTS INSTED OF WRITTING RAW SQL QUERIES.
+
+
+LARAVEL USES ITS OWN ORM CALLED ELOQUENT ORM 
+
+With Eloquent, each database table is represented by a model (class).
+
+🔹 Simple Example
+
+Instead of writing SQL like this:
+
+SELECT * FROM users WHERE id = 1;
+
+You can use Eloquent:
+
+$user = User::find(1);
+Here:
+
+User is a model (represents the users table)
+find(1) fetches the record with ID = 1
+
+// Get all users
+$users = User::all();
+
+// Insert
+User::create(['name' => 'John']);
+
+// Update
+$user->update(['name' => 'Jane']);
+
+// Delete
+$user->delete();
+
+
+LARAVEL ORM (ELOQUENT ORM) PROVIDES SIMPLE METHODS FOR HANDLING REALTIONSHIP.
+
+
+
 
