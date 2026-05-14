@@ -37,5 +37,125 @@ $user->delete();
 LARAVEL ORM (ELOQUENT ORM) PROVIDES SIMPLE METHODS FOR HANDLING REALTIONSHIP.
 
 
+1. ONE TO ONE RELATIONSHIP 
+
+ONE RECORD CONNECTED TO ONLY ONE OTHER RECORD.
+
+
+EXAMPLE -> ONE USER -> ONE PROFILE 
+
+USER TABLE 
+ID  NAME 
+
+PROFILE TABLE 
+ID USER_ID PHONE 
+
+
+USER MODEL 
+
+public function profile(){
+      return $this->hasone(Profile::class);
+}
+
+PROFILE MODEL 
+
+public function user(){
+    return $this->belongsTo(User::class);
+}
+
+IN CONTROLLER NOW YOU CAN GET THAT
+
+$farm = Farm::find(1);
+$farm->profile;
+
+
+
+2.  ONE TO MANY RELATIONSHIP 
+
+ONE RECORD CAN CONECTED TO MANY RECORDS 
+
+EXAMPLE -> ONE FARM -> MANY GOATS 
+
+
+FARM TABLE 
+ID   FARM_NAME 
+
+GOATS TABLE 
+ID FARM_ID GOAT_NAME
+
+FARM MODEL
+public function goats(){
+       return $this->hasmany(Goat::class);
+     }
+
+GOATS MODEL 
+public function farm(){
+       return $this->belongsTo(Farm::class);
+}
+
+
+3️⃣ Many-to-Many Relationship
+Meaning
+
+Many records can belong to many records.
+
+Example:
+
+Many Students ↔ Many Courses
+
+A student can join many courses.
+A course can have many students.
+
+🔹 Tables
+students table
+id	name
+1	Affan
+courses table
+id	title
+1	Laravel
+course_student table (Pivot Table)
+student_id	course_id
+1	1
+🔹 Models
+Student Model
+public function courses()
+{
+    return $this->belongsToMany(Course::class);
+}
+Course Model
+public function students()
+{
+    return $this->belongsToMany(Student::class);
+}
+
+
+4️⃣ Has One Through
+Meaning
+
+Access another model through an intermediate model.
+
+Example:
+
+Country → User → Post
+
+A country has users.
+Users have posts.
+
+Country can access posts through users.
+
+
+public function posts()
+{
+    return $this->hasManyThrough(Post::class, User::class);
+}
+
+
+
+
+
+
+
+
+
 
 
